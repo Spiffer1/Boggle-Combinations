@@ -21,7 +21,6 @@ def findAllCombinations(depth, combo):
             combo.append(letter)
             findAllCombinations(depth, combo)
             del combo[-1]
-        dice.append(die)
         depth += 1
 
 
