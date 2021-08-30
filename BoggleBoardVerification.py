@@ -1,6 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+A program to verify that a given string of letters is a possible roll in
+a standard game of Boggle.
+
+(This program models the dice in the newer
+version of Boggle, sold from 1987 - 2008. See
+http://www.bananagrammer.com/2013/10/the-boggle-cube-redesign-and-its-effect.html
+for history of the letter distributions used.)
+
+This program stores all combinations of 10 of the dice in a python set, which
+is hashed so that membership in the set can be determined quickly. Generating
+the set of all combinations of 10 dice takes ~10 seconds on a 2016 MacBook Pro.
+
+After that set is created, any number of Boggle rolls can be checked, requiring
+a fraction of a second each. Three test cases are included near the end of
+this code.
+
 Created on Wed Aug 25 07:05:40 2021
 
 @author: sfottrell
@@ -79,7 +95,12 @@ combo = []
 storeDiceCombinations(depth, combo)
 print('Combinations stored')
 
-# roll = 'abcdefghijklmnop'
-# roll = 'aaaaacdddeeeeehh'
-roll = 'ejsfttdryhnwsyml'
-print(isValidRoll(roll))
+# 3 test cases follow. The first is not a possible roll in Boggle:
+roll = 'abcdefghijklmnop'
+print(roll, ':', isValidRoll(roll))
+
+roll = 'aaaaacdddeeeeehh'
+print(roll, ':', isValidRoll(roll))
+
+roll = 'jsfwttdreyhnsyml'
+print(roll, ':', isValidRoll(roll))
