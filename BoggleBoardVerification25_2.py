@@ -63,7 +63,12 @@ def isValidRoll(roll):
     rollList = list(roll)
     found = (False, '')  # Second argument will contain path once found is True
     path = ''
-    return verifyRoll(rollList, currentDie, found, path)
+    found = verifyRoll(rollList, currentDie, found, path)
+    if found[0]:
+        rollValues = zip(found[1], dice)
+        for roll in rollValues:
+            print(roll)
+    return found
 
 
 def verifyRoll(rollList, currentDie, found, path):
